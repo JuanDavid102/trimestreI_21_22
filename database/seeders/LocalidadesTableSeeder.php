@@ -14,8 +14,20 @@ class LocalidadesTableSeeder extends Seeder
      */
     public function run()
     {
-        Localidad::truncate();
+        self::seedLocalidad();
+    }
 
+    private static function seedLocalidad()
+    {
+        Localidad::truncate();
+        foreach (self::$localidades as $localidad) {
+            $l = new Localidad;
+            $l->nombre = $localidad["nombre"];
+            $l->estado = $localidad["estado"];
+            $l->poblacion = $localidad["poblacion"];
+            $l->municipio_id = $localidad["municipio_id"];
+            $l->save();
+        }
     }
 
     private static $localidades = array (

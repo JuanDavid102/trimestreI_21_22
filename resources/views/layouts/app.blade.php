@@ -28,7 +28,7 @@
 			<div id="bg"></div>
 			<div id="overlay"></div>
 			<div id="principal">
-                @include('layouts.navigation')
+
 
                 <!-- Page Heading -->
                 <header id="header" class="bg-white shadow">

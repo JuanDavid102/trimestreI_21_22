@@ -20,12 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/localidades/{municipio_id?}', [LocalidadesController::class, 'index'])->name('localidades');
+
+Route::get('/municipios/edit/{id}', [MunicipiosController::class, 'getEdit'])->name('getMunicipio');
+
 Route::get('import', [TerremotosController::class, 'getImport']);
 
 Route::get('municipios', [MunicipiosController::class, 'getIndex'])->name('municipios');
 
+Route::put('municipios', [MunicipiosController::class, 'putEdit']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 require __DIR__.'/auth.php';

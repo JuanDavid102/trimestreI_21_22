@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Municipios de La Palma') }}
+            {{ __('Localidades de La Palma') }}
         </h2>
     </x-slot>
 
@@ -14,28 +14,34 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Estado</th>
                                 <th>Poblaci&oacute;n</th>
-                                <th>Actions</th>
+                                <th>Municipio</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach( $municipios as $municipio )
+
+                            @foreach ($localidades as $localidad)
+
                             <tr>
                                 <td>
-                                <a href="{{route('localidades', array('municipio_id' => $municipio->id))}}">
-                                    {{ $municipio->nombre }}</a>
+                                <a href="{{ url('/terremotos/' . $localidad->municipio_id ) }}">
+                                    {{$localidad->nombre}}</a>
                                 </td>
                                 <td>
-                                    {{ $municipio->poblacion }}
+                                    {{$localidad->estado}}</a>
                                 </td>
                                 <td>
-                                    <a href="{{route('getMunicipio', array('id' => $municipio->id))}}" >
-                                        <img src="/assets/css/images/edit.png" width="32px" />
-                                    </a>
+                                    {{$localidad->poblacion}}
+                                </td>
+                                <td>
+                                    {{$localidad->municipio_id}}</a>
                                 </td>
 
                             </tr>
+
                             @endforeach
+
                         </tbody>
                     </table>
                     </div>
