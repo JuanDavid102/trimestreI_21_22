@@ -28,6 +28,10 @@ Route::get('import', [TerremotosController::class, 'getImport']);
 
 Route::get('municipios', [MunicipiosController::class, 'getIndex'])->name('municipios');
 
+Route::get('/terremotos/{localidad_id}', [TerremotosController::class, 'getIndex'])->name('terremotos');
+
+Route::get('/terremotos', [TerremotosController::class, 'getIndex'])->name('terremotos');
+
 Route::put('municipios', [MunicipiosController::class, 'putEdit']);
 
 Route::get('/dashboard', function () {
